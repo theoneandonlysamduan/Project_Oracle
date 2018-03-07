@@ -1,5 +1,6 @@
 import urllib.request
 import json
+from os import remove
 
 response = urllib.request.urlopen('http://api.wunderground.com/api/386a8e8ab04d7748/conditions/q/NH/Manchester.json')
 res = json.load(response)
@@ -21,4 +22,6 @@ loc		= location()							#Fetches location
 
 final_str = loc + ', ' + weather + ',' + temp
 #Makes the final string, outputs something like "Manchester NH, Mostly Cloudy, 4.7℃". 
-print(final_str)
+remove('Weather')
+f = open('Weather', 'w+')
+f.write(final_str)
