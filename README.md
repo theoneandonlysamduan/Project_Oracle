@@ -16,3 +16,5 @@ To create a piece of software that is able to pull weather information and displ
 
  ## Current Issues:
  Currently the display module is still not added, and is not worked into the Central Module yet. So dar it is only updating the weather and the time. 
+ 
+ The Calendar Module is still work in progress. 
