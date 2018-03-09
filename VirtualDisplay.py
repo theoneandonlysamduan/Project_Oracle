@@ -11,7 +11,7 @@ screen = pygame.display.set_mode((x,y))	#Sets the size
 
 #Sets the window. Working. 
 def set_window():
-	window_caption = 'Project Oracle'
+	window_caption = 'Duanaweather'
 	pygame.display.set_caption(window_caption)	#Sets the title
 	#Sets the background
 	background = pygame.Surface(screen.get_size())
@@ -23,7 +23,12 @@ def set_window():
 
 #Adds the time. 
 def display_time():
-	date_time_file = open('Time'   , 'r')
+
+	try: 
+		date_time_file = open('Time'   , 'r')
+	except FileNotFoundError: 
+		return
+	
 	date_time      = date_time_file.readlines()
 	#If clause: If time file is empty(created by 'open'), skip this function. 
 	if os.stat('Time').st_size == 0:
@@ -42,16 +47,20 @@ def display_time():
 	pygame.display.flip()
 
 def display_weather():
-	city_weather_file = open('Weather', 'r')
+	try: 
+		city_weather_file = open('Weather', 'r')
+	except FileNotFoundError: 
+		return
+		
 	city_weather      = city_weather_file.readlines()
 	#If clause: If weather file is empty, skip this function. 
 	if os.stat('Weather').st_size == 0:
 		return
 		
 	city        = city_weather[0]
-	#city		= city   [:len(city)-1]
+	city		= city   [:len(city)-1]
 	weather     = city_weather[1]
-	#weather 	= weather[:len(weather)-1]
+	weather 	= weather[:len(weather)-1]
 	temperature = city_weather[2]
 	
 	weather_label     = font.render(weather    , 1, (255, 255, 255))
