@@ -14,5 +14,5 @@ f = open('Time', 'w+')
 f.write(finalString)					#Writes the final string into the cache file
 
 
-print(date)
-print(time)
+#print(date)					#Prints for debugging
+#print(time)

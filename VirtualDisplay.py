@@ -1,4 +1,4 @@
-import pygame
+import pygame, os
 from pygame.locals import *
 from time import sleep
 
@@ -25,6 +25,10 @@ def set_window():
 def display_time():
 	date_time_file = open('Time'   , 'r')
 	date_time      = date_time_file.readlines()
+	#If clause: If time file is empty(created by 'open'), skip this function. 
+	if os.stat('Time').st_size == 0:
+		return
+		
 	date = date_time[0]
 	time = date_time[1]
 	date = date[:10]			#Gets rid of the \n at the end of the line
@@ -33,15 +37,21 @@ def display_time():
 	date_label = font.render(date, 1, (255, 255, 255))
 	
 	screen.blit(time_label, (5  , 5))
-	screen.blit(date_label, (250, 5))
+	screen.blit(date_label, (230, 5))
 	
 	pygame.display.flip()
 
 def display_weather():
 	city_weather_file = open('Weather', 'r')
 	city_weather      = city_weather_file.readlines()
+	#If clause: If weather file is empty, skip this function. 
+	if os.stat('Weather').st_size == 0:
+		return
+		
 	city        = city_weather[0]
+	#city		= city   [:len(city)-1]
 	weather     = city_weather[1]
+	#weather 	= weather[:len(weather)-1]
 	temperature = city_weather[2]
 	
 	weather_label     = font.render(weather    , 1, (255, 255, 255))
@@ -50,14 +60,22 @@ def display_weather():
 	
 	screen.blit(weather_label    , (5  , 35))
 	screen.blit(loc_label        , (5  , 60))
-	screen.blit(temperature_label, (250, 35))
+	screen.blit(temperature_label, (230, 35))
 	
 	pygame.display.flip()
+
+def reset_window():
+	background = pygame.Surface(screen.get_size())
+	background = background.convert()
+	background.fill((150, 150, 150))
+	
+	screen.blit(background, (0, 0))				#Applies the background
+	pygame.display.flip()						#Refreshes the window
 
 set_window()
 while True: 
 	sleep(0.5)
-	set_window()
+	reset_window()
 	display_time()
 	display_weather()
 	for event in pygame.event.get():

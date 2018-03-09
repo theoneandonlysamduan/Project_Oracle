@@ -35,6 +35,8 @@ interval_weather = 0
 timeCache    = time.clock_gettime(time.CLOCK_REALTIME)//1	
 weatherCache = time.clock_gettime(time.CLOCK_REALTIME)//1
 
+TimeModule()
+WeatherModule()
 #print('Press "q" to quit')
 while True:
 	current_time = time.clock_gettime(time.CLOCK_REALTIME)//1
