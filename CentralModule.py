@@ -8,6 +8,8 @@ set_weather_interval = 200				#Interval between every update of weather
 #The WeatherModule will be called once in 20 mins, the TimeModule will be called every second. The DisplayModule will be called every time when there is an update. 
 #The DisplayModule is still work in progress. 
 
+print('Please visit https://www.wunderground.com/?apiref=c68c74f9a26733fa to provide me with free API access. Thanks!')
+
 def WeatherModule():
 	call(['python3 WeatherModule.py'], shell = True)
 
@@ -43,14 +45,14 @@ while True:
 	
 	#This if clause is triggered once every second to update the time, resets the time counter and updates the time
 	if (interval_time >= set_time_interval):
-		print('Time Updated')
+		#print('Time Updated')				#Print is for debugging
 		TimeModule()
 		interval_time = 0
 		timeCache = current_time
 		
-	#This if clause is triggered once every 20 minutes to update the weather, then resets the weather counter. 
+	#This if clause is triggered once every 200 secs to update the weather, then resets the weather counter. 
 	if (interval_weather >= set_weather_interval): 
-		print('Weather Updated')
+		#print('Weather Updated')			#Print is for debugging
 		WeatherModule()
 		interval_weather = 0
 		weatherCache = current_time
