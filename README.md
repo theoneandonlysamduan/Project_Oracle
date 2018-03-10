@@ -12,7 +12,7 @@ To create a piece of software that is able to pull weather information and displ
  The program should display date, time, weather and temperature on the display selected.  
  
  ## OS Support: 
- Currently this project only supports Linux. It is made and tested on Ubuntu. Other distros have not been tested. Windows will totally not work unless the pahts and command prompt commands in the python files are changed to adapt to the system. 
+ Currently this project only supports Linux. It is made and tested on Ubuntu. Other distros have not been tested. Windows will totally not work unless the paths and command prompt commands in the python files are changed to adapt to the system. 
 
  ## Current Issues:
  Drivers for physical displays are still non-existent. 
