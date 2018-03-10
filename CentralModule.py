@@ -1,4 +1,4 @@
-from subprocess import call
+from subprocess import Popen
 import time, sys, termios, tty, os
 
 set_time_interval    = 1				#Interval between every update of time
@@ -11,24 +11,26 @@ print('Please visit https://www.wunderground.com/?apiref=c68c74f9a26733fa to pro
 print('Ctrl+C to quit the program.')
 
 def WeatherModule():
-	call(['python3 WeatherModule.py'], shell = True)
+	Popen(['python3 WeatherModule.py'], shell = True)
 
 def TimeModule():
-	call(['python3 TimeModule.py'], shell = True)
+	Popen(['python3 TimeModule.py'], shell = True)
 
 def VirtualDisplay():
-	call(['python3 VirtualDisplay.py'], shell = True)
+	Popen(['python3 VirtualDisplay.py'], shell = True)
 
 
 #This chunk is to decide which display module to pull up. 
 args = sys.argv
 sig = True
+
 #If number of arguments is wrong, skip the while loop and end everything. 
 if len(args) > 2: 
 	sig = False
 	print('Wrong arguments. Please use -h to get help.')
 elif args[1] == '-vd': 		#If argument is -vd pull up Virtual Display Module
 	VirtualDisplay()
+	sig = True
 elif args[1] == '-h':		#If argument is -h then pull up help. May wanna get it into a separate file. 
 	print('Help\n')
 	print('Argument \t Function')
@@ -37,9 +39,7 @@ elif args[1] == '-h':		#If argument is -h then pull up help. May wanna get it in
 	sig = False
 else: 
 	print('Wrong arguments. Please use -h to get help.')
-
-
-
+	sig = False
 
 #Those two variables store the interval between the last and the current trigger of the time and weather modules. 
 interval_time 	 = 0
@@ -51,8 +51,9 @@ weatherCache = time.clock_gettime(time.CLOCK_REALTIME)//1
 
 TimeModule()
 WeatherModule()
-#print('Press "q" to quit')
+
 while sig:
+	#print('While True Started')			#Print is for plebs/debugging
 	current_time = time.clock_gettime(time.CLOCK_REALTIME)//1
 	#interval_time records the current time from the last trigger of TimeModule. 
 	#interval_weather records the current time from the last trigger of WeatherModule. 

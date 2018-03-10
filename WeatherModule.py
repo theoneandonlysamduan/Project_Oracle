@@ -17,7 +17,7 @@ def location():
 #location() works and returns a string that looks like "San Fran CA". 
 
 weather	= obs_rst['weather']					#Fetches weather as a string
-temp 	= str(obs_rst['temp_c']) + 'degrees Celcius'			#Fetches temperature, outputs something like "20℃"
+temp 	= str(obs_rst['temp_c']) + 'degrees Celsius'			#Fetches temperature, outputs something like "20℃"
 loc		= location()							#Fetches location
 
 final_str = loc + '\n' + weather + '\n' + temp
