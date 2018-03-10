@@ -9,7 +9,7 @@ To create a piece of software that is able to pull weather information and displ
   4. Run CentralModule with python3. 
  
  ## End Result: 
- The program should display date, time, weather and temperature to the display hooked up. 
+ The program should display date, time, weather and temperature on the display selected.  
  
  ## OS Support: 
  Currently this project only supports Linux. It is made and tested on Ubuntu. Other distros have not been tested. Windows will totally not work unless the pahts and command prompt commands in the python files are changed to adapt to the system. 
