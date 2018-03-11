@@ -1,0 +1,14 @@
+Help
+All of the help you will possibily need in Duanaweather. 
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Duanaweather: Newest production of Sam Duan's Backyard Electronics (as of March 2018), provides you with weather and time but using half of your system resources. 
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Arguments		Usage
+_________________________________________________________
+-h			Gets you to this help page.
+ 
+-vd			Starts up a virtual display that 
+			displays the time and weather. 
+
+-[anything else]	You get laughed at. 

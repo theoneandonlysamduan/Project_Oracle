@@ -68,7 +68,7 @@ def display_weather():
 	temperature_label = font.render(temperature, 1, (255, 255, 255))
 	
 	screen.blit(weather_label    , (5  , 35))
-	screen.blit(loc_label        , (5  , 60))
+	screen.blit(loc_label        , (5  , 280))
 	screen.blit(temperature_label, (230, 35))
 	
 	pygame.display.flip()
@@ -87,7 +87,4 @@ while True:
 	reset_window()
 	display_time()
 	display_weather()
-	for event in pygame.event.get():
-		if (event.type == QUIT):		#Currently not quitting
-			break
 	

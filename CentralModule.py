@@ -1,14 +1,9 @@
 from subprocess import Popen
-import time, sys, termios, tty, os
+import time, sys#, termios, tty, os	#Those commented libs are used for keystroke recognition. 
 
 set_time_interval    = 1				#Interval between every update of time
 set_weather_interval = 200				#Interval between every update of weather
-#The WeatherModule will be called once in 20 mins, the TimeModule will be called every second. The DisplayModule will be called every time when there is an update. 
-
-#The DisplayModule is still work in progress. 
-
-print('Please visit https://www.wunderground.com/?apiref=c68c74f9a26733fa to provide me with free API access. Thanks!')
-print('Ctrl+C to quit the program.')
+#The WeatherModule will be called once in 20 mins, the TimeModule will be called every second. The Display Module will be started at the start of the program according to the arguments specified and refresh itself. 
 
 def WeatherModule():
 	Popen(['python3 WeatherModule.py'], shell = True)
@@ -28,15 +23,17 @@ sig = True
 if len(args) > 2: 
 	sig = False
 	print('Wrong arguments. Please use -h to get help.')
+	
 elif args[1] == '-vd': 		#If argument is -vd pull up Virtual Display Module
 	VirtualDisplay()
 	sig = True
-elif args[1] == '-h':		#If argument is -h then pull up help. May wanna get it into a separate file. 
-	print('Help\n')
-	print('Argument \t Function')
-	print('-h \t\t Gets you to this page')
-	print('-vd \t\t Opens a window made with pygame with all of the information')
+	
+elif args[1] == '-h':		#If argument is -h then pull up help file. 
+	help_file_raw = open('Help', 'r')
+	help_file     = help_file_raw.read()
+	print(help_file)
 	sig = False
+	
 else: 
 	print('Wrong arguments. Please use -h to get help.')
 	sig = False
@@ -49,8 +46,12 @@ interval_weather = 0
 timeCache    = time.clock_gettime(time.CLOCK_REALTIME)//1	
 weatherCache = time.clock_gettime(time.CLOCK_REALTIME)//1
 
-TimeModule()
-WeatherModule()
+if sig: 
+	print('Please visit https://www.wunderground.com/?apiref=c68c74f9a26733fa to provide me with free API access. Thanks!')
+	print('Ctrl+C to quit the program.')
+	#Update the time and weather before displaying
+	TimeModule()
+	WeatherModule()
 
 while sig:
 	#print('While True Started')			#Print is for plebs/debugging
