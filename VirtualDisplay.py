@@ -1,7 +1,8 @@
-import pygame, os
+import pygame, os, sys
 from pygame.locals import *
 from time import sleep
 
+#Actual program
 pygame.init()
 font = pygame.font.SysFont('roboto', 40)
 #x and y are dimensions of the window. 
@@ -74,9 +75,9 @@ def display_weather():
 	font = pygame.font.SysFont('roboto', 30)
 	temperature_label = font.render(temperature, 1, (255, 255, 255))
 	
-	screen.blit(weather_label    , (5  , 35))
+	screen.blit(weather_label    , (5  , 35 ))
 	screen.blit(loc_label        , (5  , 280))
-	screen.blit(temperature_label, (250, 45))
+	screen.blit(temperature_label, (250, 45 ))
 	
 	pygame.display.flip()
 
@@ -88,10 +89,24 @@ def reset_window():
 	screen.blit(background, (0, 0))				#Applies the background
 	pygame.display.flip()						#Refreshes the window
 
+#Initial check to see if to run the module or not. 
+flag_raw = open('runFlag')
+flag = flag_raw.readlines()
+flag_raw.close()
+if flag[0] == '0': 
+	sys.exit()
+
 set_window()
+
 while True: 
-	sleep(0.5)
+	sleep(0.999)
 	reset_window()
 	display_time()
 	display_weather()
+	#Check whether the flag is still up. If flag down, end display. 
+	flag_raw = open('runFlag')
+	flag = flag_raw.readlines()
+	flag_raw.close()
+	if flag[0] == '0':
+		sys.exit()
 	

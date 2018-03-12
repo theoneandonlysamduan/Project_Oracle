@@ -12,6 +12,9 @@ _________________________________________________________
 			displays the time and weather in 
 			the given city. Can't debug the 
 			city yet. The State will be the 
-			2-letter abbreviations. 
+			2-letter abbreviations. If there 
+			are more than 1 word in the city 
+			name, connect them with undersc-
+			ores. 
 
 -[anything else]	You get laughed at. 

@@ -62,7 +62,13 @@ if sig:
 	#Update the time and weather before displaying
 	TimeModule()
 	WeatherModule()
-
+	
+	#Set the runFlag to 1 so that all other modules will run. 
+	os.remove('runFlag')
+	f = open('runFlag', 'w+')
+	f.write('1')
+	f.close()
+	
 while sig:
 	#print('While True Started')			#Print is for plebs/debugging
 	current_time = time.clock_gettime(time.CLOCK_REALTIME)//1
@@ -85,5 +91,13 @@ while sig:
 		WeatherModule()
 		interval_weather = 0
 		weatherCache = current_time
+	
+	#Checks flag. If the flag is 0, end everything. 
+	flag_raw = open('runFlag')
+	flag = flag_raw.readlines()
+	if flag[0] == '0':
+		print('Terminating.')
+		sys.exit()
+
 	
 	time.sleep(0.5)				#halt for half a second to save sys resources

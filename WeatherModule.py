@@ -7,10 +7,7 @@ city_file  = open('City' , 'r')
 state_file = open('State', 'r')
 city = city_file.read()
 state = state_file.read()
-print(city)
-print(state)
 url = 'http://api.wunderground.com/api/386a8e8ab04d7748/conditions/q/'+state+'/'+city+'.json'
-print (url)
 
 response = urllib.request.urlopen(url)
 	
@@ -21,6 +18,10 @@ if 'error' in res['response'].keys():
 	f = open('Weather', 'w+')
 	f.close()
 	print('Error. Please check the city and state settings. Ctrl+C to quit.')
+	os.remove('runFlag')
+	f = open('runFlag', 'w+')
+	f.write('0')
+	f.close()
 	sys.exit()
 
 obs_rst = res['current_observation']			#Fetches the observation results as a large dictionary
