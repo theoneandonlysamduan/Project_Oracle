@@ -6,7 +6,8 @@ To create a piece of software that is able to pull weather information and displ
   1. Setup the Serial communication on the Raspberry Pi
   2. Connect the Serial display to the Raspberry Pi. 
   3. Download the project files into one folder. 
-  4. Run CentralModule with python3. 
+  4. Get into the folder directory in the terminal. 
+  5. run python3 CentralModule.py -h to see the help docs. 
  
  ## End Result: 
  The program should display date, time, weather and temperature to the display hooked up. 
