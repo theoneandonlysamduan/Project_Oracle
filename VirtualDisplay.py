@@ -97,16 +97,23 @@ if flag[0] == '0':
 	sys.exit()
 
 set_window()
+#Try-except used to detect keystrokes and to quit the program. 
+try:
+	while True: 
+		sleep(0.999)
+		reset_window()
+		display_time()
+		display_weather()
+		#Check whether the flag is still up. If flag down, end display. 
+		flag_raw = open('runFlag')
+		flag = flag_raw.readlines()
+		flag_raw.close()
+		if flag[0] == '0':
+			sys.exit()
+except KeyboardInterrupt: 
+	os.remove ('runFlag')
+	f = open('runFlag', 'w')
+	f.write('0')
+	f.close()
+	sys.exit()
 
-while True: 
-	sleep(0.999)
-	reset_window()
-	display_time()
-	display_weather()
-	#Check whether the flag is still up. If flag down, end display. 
-	flag_raw = open('runFlag')
-	flag = flag_raw.readlines()
-	flag_raw.close()
-	if flag[0] == '0':
-		sys.exit()
-	
