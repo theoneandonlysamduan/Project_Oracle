@@ -17,22 +17,21 @@ response = urllib.request.urlopen(url)
 res = json.load(response)
 
 if 'error' in res['response'].keys():
-	print('error')
+	os.remove('Weather')
+	f = open('Weather', 'w+')
+	f.close()
+	print('Error. Please check the city and state settings. Ctrl+C to quit.')
 	sys.exit()
 
 obs_rst = res['current_observation']			#Fetches the observation results as a large dictionary
 
-loc_info= obs_rst['display_location']			#Fetches the location subdictionary
 def location(): 
-	city 	= loc_info['city']					#Fetches city name
-	state 	= loc_info['state']					#Fetches state name
-	
 	endString = city + ' ' + state				#Processes two strings into one for final output
 	return endString
 #location() works and returns a string that looks like "San Fran CA". 
 
 weather	= obs_rst['weather']					#Fetches weather as a string
-temp 	= str(obs_rst['temp_c']) + ' degrees Celsius'			#Fetches temperature, outputs something like "20℃"
+temp 	= str(obs_rst['temp_c']) + ' degrees Celsius'			#Fetches temperature, outputs something like "20 degrees Celsius"
 loc		= location()							#Fetches location
 
 final_str = loc + '\n' + weather + '\n' + temp

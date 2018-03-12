@@ -8,7 +8,10 @@ Arguments		Usage
 _________________________________________________________
 -h			Gets you to this help page.
  
--vd			Starts up a virtual display that 
-			displays the time and weather. 
+-vd [City] [State]	Starts up a virtual display that 
+			displays the time and weather in 
+			the given city. Can't debug the 
+			city yet. The State will be the 
+			2-letter abbreviations. 
 
 -[anything else]	You get laughed at. 

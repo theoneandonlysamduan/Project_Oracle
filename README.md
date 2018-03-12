@@ -9,17 +9,12 @@ To create a piece of software that is able to pull weather information and displ
   4. Run CentralModule with python3. 
  
  ## End Result: 
- The program should display date, time, weather and temperature on the display selected.  
+ The program should display date, time, weather and temperature to the display hooked up. 
  
  ## OS Support: 
- Currently this project only supports Linux. It is made and tested on Ubuntu. Other distros have not been tested. Windows will totally not work unless the paths and command prompt commands in the python files are changed to adapt to the system. 
+ Currently this project only supports Linux. It is made and tested on Ubuntu. Other distros have not been tested. Windows will totally not work unless the pahts and command prompt commands in the python files are changed to adapt to the system. 
 
  ## Current Issues:
- Drivers for physical displays are still non-existent. 
+ Currently the display module is still not added, and is not worked into the Central Module yet. So dar it is only updating the weather and the time. 
  
  The Calendar Module is still work in progress. 
- 
- The program currently doesn't work on a Raspberry Pi. Reasons unknown. 
- 
- The Virtual Display takes up WAY too much CPU time. Don't know why yet. 
- 
