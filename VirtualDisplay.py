@@ -23,7 +23,7 @@ def set_window():
 
 #Adds the time. 
 def display_time():
-
+	
 	try: 
 		date_time_file = open('Time'   , 'r')
 	except FileNotFoundError: 
@@ -38,15 +38,19 @@ def display_time():
 	time = date_time[1]
 	date = date[:10]			#Gets rid of the \n at the end of the line
 	
+	font = pygame.font.SysFont('roboto', 70)
 	time_label = font.render(time, 1, (255, 255, 255))
+	
+	font = pygame.font.SysFont('roboto', 30)
 	date_label = font.render(date, 1, (255, 255, 255))
 	
-	screen.blit(time_label, (5  , 5))
-	screen.blit(date_label, (230, 5))
+	screen.blit(time_label, (5  , 80))
+	screen.blit(date_label, (5, 5))
 	
 	pygame.display.flip()
 
 def display_weather():
+	
 	try: 
 		city_weather_file = open('Weather', 'r')
 	except FileNotFoundError: 
@@ -63,13 +67,16 @@ def display_weather():
 	weather 	= weather[:len(weather)-1]
 	temperature = city_weather[2]
 	
+	font = pygame.font.SysFont('roboto', 50)
 	weather_label     = font.render(weather    , 1, (255, 255, 255))
+	font = pygame.font.SysFont('roboto', 30)
 	loc_label         = font.render(city       , 1, (255, 255, 255))
+	font = pygame.font.SysFont('roboto', 30)
 	temperature_label = font.render(temperature, 1, (255, 255, 255))
 	
 	screen.blit(weather_label    , (5  , 35))
 	screen.blit(loc_label        , (5  , 280))
-	screen.blit(temperature_label, (230, 35))
+	screen.blit(temperature_label, (250, 45))
 	
 	pygame.display.flip()
 

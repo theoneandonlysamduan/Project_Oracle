@@ -1,9 +1,24 @@
 import urllib.request
 import json
-from os import remove
 
-response = urllib.request.urlopen('http://api.wunderground.com/api/386a8e8ab04d7748/conditions/q/NH/Manchester.json')
+import os, sys
+
+city_file  = open('City' , 'r')
+state_file = open('State', 'r')
+city = city_file.read()
+state = state_file.read()
+print(city)
+print(state)
+url = 'http://api.wunderground.com/api/386a8e8ab04d7748/conditions/q/'+state+'/'+city+'.json'
+print (url)
+
+response = urllib.request.urlopen(url)
+	
 res = json.load(response)
+
+if 'error' in res['response'].keys():
+	print('error')
+	sys.exit()
 
 obs_rst = res['current_observation']			#Fetches the observation results as a large dictionary
 
@@ -22,6 +37,6 @@ loc		= location()							#Fetches location
 
 final_str = loc + '\n' + weather + '\n' + temp
 #Makes the final string, outputs something like "Manchester NH, Mostly Cloudy, 4.7℃". 
-remove('Weather')
+os.remove('Weather')
 f = open('Weather', 'w+')
 f.write(final_str)

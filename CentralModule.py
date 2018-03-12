@@ -1,5 +1,5 @@
 from subprocess import Popen
-import time, sys#, termios, tty, os	#Those commented libs are used for keystroke recognition. 
+import time, sys, os#, termios, tty	#Those commented libs are used for keystroke recognition. 
 
 set_time_interval    = 1				#Interval between every update of time
 set_weather_interval = 200				#Interval between every update of weather
@@ -20,23 +20,33 @@ args = sys.argv
 sig = True
 
 #If number of arguments is wrong, skip the while loop and end everything. 
-if len(args) > 2: 
-	sig = False
-	print('Wrong arguments. Please use -h to get help.')
-	
-elif args[1] == '-vd': 		#If argument is -vd pull up Virtual Display Module
+if len(args) == 4:		#If there are 4 arguments, the 2nd and 3rd is the city and the state. 
+	city  = args[2]
+	state = args[3]
+	#Write the city and the state into the cache files. 
+	os.remove('City')
+	os.remove('State')
+	city_file  = open('City' , 'w')
+	state_file = open('State', 'w')
+	city_file.write(city)
+	state_file.write(state)
+	#Has to close or the city and state file will not update
+	city_file.close()
+	state_file.close()
+
+if args[1] == '-vd': 		#If the 1st argument is -vd pull up Virtual Display Module
 	VirtualDisplay()
 	sig = True
-	
-elif args[1] == '-h':		#If argument is -h then pull up help file. 
+
+elif args[1] == '-h':		#If the argument is -h then pull up help file. 
 	help_file_raw = open('Help', 'r')
 	help_file     = help_file_raw.read()
 	print(help_file)
 	sig = False
 	
 else: 
-	print('Wrong arguments. Please use -h to get help.')
 	sig = False
+	print('Wrong arguments. Please use -h to get help.')
 
 #Those two variables store the interval between the last and the current trigger of the time and weather modules. 
 interval_time 	 = 0
