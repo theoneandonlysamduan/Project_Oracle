@@ -46,7 +46,7 @@ elif args[1] == '-h':		#If the argument is -h then pull up help file.
 	
 else: 
 	sig = False
-	print('Wrong arguments. Please use -h to get help.')
+	print('Ha ha ha, dab dab dab, wrong arguments. Please use -h to get help.')
 
 #Those two variables store the interval between the last and the current trigger of the time and weather modules. 
 interval_time 	 = 0

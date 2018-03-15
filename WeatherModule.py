@@ -17,7 +17,7 @@ if 'error' in res['response'].keys():
 	os.remove('Weather')
 	f = open('Weather', 'w+')
 	f.close()
-	print('Error. Please check the city and state settings. Ctrl+C to quit.')
+	print('Error. Please check the city and state settings.')
 	os.remove('runFlag')
 	f = open('runFlag', 'w+')
 	f.write('0')
