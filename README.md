@@ -1,4 +1,5 @@
 # Project_Oracle
+This project has been ported to my personal account(instead of the school account). Go to https://github.com/GeneralLol/Duanaweather for updates and such.
 ## Objective: 
 To create a piece of software that is able to pull weather information and display it through the serial port of a Raspberry Pi. 
 
